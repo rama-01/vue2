@@ -8,32 +8,23 @@
   <script src="./node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app-7">
-    <ol>
-      <!--
-      现在我们为每个 todo-item 提供 todo 对象
-      todo 对象是变量，即其内容可以是动态的。
-      我们也需要为每个组件提供一个“key”，稍后再
-      作详细解释。
-    -->
-      <todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
-    </ol>
+  <div id="app">
+    <button v-bind:disabled="isButtonDisabled">Button</button>
   </div>
   <script>
-    Vue.component('todo-item', {
-      props: ['todo'], //自定义属性
-      template: '<li>{{ todo.text }}</li>'
+    // 我们的数据对象
+    var data = { a: 1 }
+    // Object.freeze(data) //阻止修改data对象
+    // 该对象被加入到一个 Vue 实例中
+    // 当一个 Vue 实例被创建时，它将 data 对象中的所有的 property 加入到 Vue 的响应式系统中
+    // 只有当实例被创建时就已经存在于 data 中的 property 才是响应式的
+    var vm = new Vue({
+      el: '#app',
+      data: data
     })
-
-    var app7 = new Vue({
-      el: '#app-7',
-      data: {
-        groceryList: [
-          { id: 0, text: '蔬菜' },
-          { id: 1, text: '奶酪' },
-          { id: 2, text: '随便其它什么人吃的东西' }
-        ]
-      }
+    vm.$watch('a', function (newValue, oldValue) {
+      // 这个回调将在 `vm.a` 改变后调用
+      console.log(newValue, oldValue);
     })
   </script>
 </body>
