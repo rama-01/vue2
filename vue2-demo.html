@@ -6,61 +6,44 @@
   <title>Document</title>
   <!-- 完整引入vue.js -->
   <script src="./node_modules/vue/dist/vue.js"></script>
+  <style>
+    .outer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+
+    .inner {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
 </head>
 <body>
-  <div id="todo-list-example">
-    <form v-on:submit.prevent="addNewTodo">
-      <label for="new-todo">Add a todo</label>
-      <input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
-      <button>Add</button>
-    </form>
-    <ul>
-      <!-- is 属性用于在使用 v-for 指令渲染动态组件时，指定组件的类型 -->
-      <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="todo.id" v-bind:title="todo.title"
-        v-on:remove="todos.splice(index, 1)"></li>
-    </ul>
+  <div id="example-2">
+    <!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+    <button v-on:click.ctrl.exact="onClick">A</button>
   </div>
   <script>
-    Vue.component('todo-item', {
-      template: '\
-    <li>\
-      {{ title }}\
-      <button v-on:click="$emit(\'remove\')">Remove</button>\
-    </li>\
-  ',
-      props: ['title']
-    })
-
-    new Vue({
-      el: '#todo-list-example',
+    var example2 = new Vue({
+      el: '#example-2',
       data: {
-        newTodoText: '',
-        todos: [
-          {
-            id: 1,
-            title: 'Do the dishes',
-          },
-          {
-            id: 2,
-            title: 'Take out the trash',
-          },
-          {
-            id: 3,
-            title: 'Mow the lawn'
-          }
-        ],
-        nextTodoId: 4
+        name: 'Vue.js'
       },
+      // 在 `methods` 对象中定义方法
       methods: {
-        addNewTodo: function () {
-          this.todos.push({
-            id: this.nextTodoId++,
-            title: this.newTodoText
-          })
-          this.newTodoText = ''
+        onClick () {
+          console.log('clicked');
         }
       }
     })
+
+    // 也可以用 JavaScript 直接调用方法
+    // example2.greet() // => 'Hello Vue.js!'
   </script>
 </body>
 </html>
