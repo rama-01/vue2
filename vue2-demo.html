@@ -8,16 +8,15 @@
   <script src="./node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
-  <div id="app">
-    <a v-bind:[attributeName]="url"> ... </a>
-  </div>
+  <ul id="app" class="demo">
+    <li v-for="item in list" :key="item">{{item}}</li>
+  </ul>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        attributename: 'href', //小写键名，这里不使用驼峰式命名法
-        url: 'https'
-      },
+        list: ['a', 'b', 'c', 'd']
+      }
     })
   </script>
 </body>
