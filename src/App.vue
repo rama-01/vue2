@@ -1,15 +1,24 @@
 <template>
   <div id="app">
-    <button @click="$router.push({ path: '/home' })">go HomePage</button>
-    <button>go AboutPage</button>
-    <router-view></router-view>
+    {{message}}
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
 export default {
-  name: "App",
-};
+  data () {
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      }
+    })
+    return {
+      app
+    }
+  }
+}
 </script>
 
 <style>
