@@ -9,22 +9,15 @@
 </head>
 <body>
   <div id="app">
-    <button v-bind:disabled="isButtonDisabled">Button</button>
+    <a v-bind:[attributeName]="url"> ... </a>
   </div>
   <script>
-    // 我们的数据对象
-    var data = { a: 1 }
-    // Object.freeze(data) //阻止修改data对象
-    // 该对象被加入到一个 Vue 实例中
-    // 当一个 Vue 实例被创建时，它将 data 对象中的所有的 property 加入到 Vue 的响应式系统中
-    // 只有当实例被创建时就已经存在于 data 中的 property 才是响应式的
     var vm = new Vue({
       el: '#app',
-      data: data
-    })
-    vm.$watch('a', function (newValue, oldValue) {
-      // 这个回调将在 `vm.a` 改变后调用
-      console.log(newValue, oldValue);
+      data: {
+        attributeName: 'href',
+        url: 'https'
+      },
     })
   </script>
 </body>
