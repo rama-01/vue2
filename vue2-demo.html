@@ -11,36 +11,22 @@
 </head>
 <body>
   <div id="app">
-    <!-- 在 HTML 中是 kebab-case 的 -->
-    <blog-post post-title="hello!"></blog-post>
+    <div id="baseexample">
+      <p>Scroll down the page</p>
+      <p v-pin="200">Stick me 200px from the top of the page</p>
+    </div>
   </div>
   <script>
-    var mixin = {
-      methods: {
-        foo: function () {
-          console.log('foo')
-        },
-        conflicting: function () {
-          console.log('from mixin')
-        }
-      }
-    }
-
-    var vm = new Vue({
-      mixins: [mixin],
-      methods: {
-        bar: function () {
-          console.log('bar')
-        },
-        conflicting: function () {
-          console.log('from self')
-        }
+    Vue.directive('pin', {
+      bind: function (el, binding, vnode) {
+        el.style.position = 'fixed'
+        el.style.top = binding.value + 'px'
       }
     })
 
-    vm.foo() // => "foo"
-    vm.bar() // => "bar"
-    vm.conflicting() // => "from self"
+    new Vue({
+      el: '#baseexample'
+    })
   </script>
 </body>
 </html>
