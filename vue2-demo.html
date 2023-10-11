@@ -11,21 +11,49 @@
 </head>
 <body>
   <div id="app">
-    <div id="baseexample">
-      <p>Scroll down the page</p>
-      <p v-pin="200">Stick me 200px from the top of the page</p>
-    </div>
+    <anchored-heading :level="1">Hello world!</anchored-heading>
   </div>
+  <!-- <script type="text/x-template" id="anchored-heading-template">
+    <h1 v-if="level === 1">
+      <slot></slot>
+    </h1>
+    <h2 v-else-if="level === 2">
+      <slot></slot>
+    </h2>
+    <h3 v-else-if="level === 3">
+      <slot></slot>
+    </h3>
+    <h4 v-else-if="level === 4">
+      <slot></slot>
+    </h4>
+    <h5 v-else-if="level === 5">
+      <slot></slot>
+    </h5>
+    <h6 v-else-if="level === 6">
+      <slot></slot>
+    </h6>
+  </script> -->
   <script>
-    Vue.directive('pin', {
-      bind: function (el, binding, vnode) {
-        el.style.position = 'fixed'
-        el.style.top = binding.value + 'px'
+    // 不使用jsx，使用渲染函数render
+    Vue.component('anchored-heading', {
+      render: function (createElement) {
+        return createElement(
+          'h' + this.level,   // 标签名称
+          this.$slots.default // 子节点数组
+        )
+      },
+      props: {
+        level: {
+          type: Number,
+          required: true
+        }
       }
     })
-
     new Vue({
-      el: '#baseexample'
+      el: '#app',
+      created () {
+        console.log('created');
+      }
     })
   </script>
 </body>
