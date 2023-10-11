@@ -11,42 +11,39 @@
 </head>
 <body>
   <div id="app">
-    <anchored-heading :level="3">Hello world!</anchored-heading>
+    <smart-list :items="[{}]"></smart-list>
   </div>
   <script>
-    var getChildrenTextContent = function (children) {
-      return children.map(function (node) {
-        return node.children
-          ? getChildrenTextContent(node.children)
-          : node.text
-      }).join('')
-    }
+    var EmptyList = { /* ... */ }
+    var TableList = { /* ... */ }
+    var OrderedList = { /* ... */ }
+    var UnorderedList = { /* ... */ }
 
-    Vue.component('anchored-heading', {
-      render: function (createElement) {
-        // 创建 kebab-case 风格的 ID
-        var headingId = getChildrenTextContent(this.$slots.default)
-          .toLowerCase()
-          .replace(/\W+/g, '-')
-          .replace(/(^-|-$)/g, '')
+    Vue.component('smart-list', {
+      functional: true,
+      props: {
+        items: {
+          type: Array,
+          required: true
+        },
+        isOrdered: Boolean
+      },
+      render: function (createElement, context) {
+        function appropriateListComponent () {
+          var items = context.props.items
+
+          if (items.length === 0) return EmptyList
+          if (typeof items[0] === 'object') return TableList
+          if (context.props.isOrdered) return OrderedList
+
+          return UnorderedList
+        }
 
         return createElement(
-          'h' + this.level,
-          [
-            createElement('a', {
-              attrs: {
-                name: headingId,
-                href: '#' + headingId
-              }
-            }, this.$slots.default)
-          ]
+          appropriateListComponent(),
+          context.data,
+          context.children
         )
-      },
-      props: {
-        level: {
-          type: Number,
-          required: true
-        }
       }
     })
     new Vue({
