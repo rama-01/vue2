@@ -1,34 +1,26 @@
 <template>
   <div id="app">
+    <h1>namespace</h1>
     <p>{{ count }}</p>
-    <button @click="add({ amount: 5 })">increment</button>
-    <button @click="increment3">increment3</button>
-    <button @click="$store.dispatch('incrementAsync', { amount: 7 })">
-      increment7
-    </button>
-    <p>{{ doneTodos }}</p>
+    <button @click="add1">add1</button>
+    <button @click="$store.commit('account/dec1')">decrement1</button>
+    <button @click="$store.dispatch('account/addAsync')">add1 async</button>
   </div>
 </template>
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from "vuex"
 export default {
-  mounted () {
-    console.log('getters', this.$store.getters.doneTodos);
+  computed: {
+    // ...mapState({
+    //   count: state => state.account.count
+    // })
+    ...mapState('account', {
+      count: state => state.count
+    })
   },
   methods: {
-    // increment() {
-    //  this.$store.commit('increment')
-    // }
-    ...mapMutations({
-      add: 'increment'
-    }),
-    ...mapActions(['increment3'])
-  },
-  // computed: mapState({
-  //   // 箭头函数可使代码更简练
-  //   count: state => state.count
-  // }),
-  // 当映射的计算属性的名称与 state 的子节点名称相同时，我们也可以给 mapState 传一个字符串数组。
-  computed: { ...mapState(['count']), ...mapGetters(['doneTodos']) }
+    ...mapActions(['account/addAsync']),
+    ...mapMutations('account', ['add1', 'dec1'])
+  }
 }
 </script>

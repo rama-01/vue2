@@ -1,37 +1,62 @@
+import { setTimeout } from 'core-js'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
-  state: {
-    count: 0,
-    todos: [
-      { id: 1, text: '...', done: true },
-      { id: 2, text: '...', done: false }
-    ]
-  },
-  getters: {
-    doneTodos: state => {
-      return state.todos.filter(todo => todo.done)
-    }
-  },
-  // payload设计为一个对象，可以传递多个字段
-  mutations: {
-    increment (state, payload) {
-      state.count += payload.amount
-    }
-  },
-  // Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 context.commit 提交一个 mutation，或者通过 context.state 和 context.getters 来获取 state 和 getters。
-  actions: {
-    increment3 (context) {
-      context.commit('increment', { amount: 3 })
-    },
-    // 如果要传递载荷，需要在actions中进行
-    incrementAsync ({ commit }, amount) {
-      setTimeout(() => {
-        commit('increment', amount)
-      }, 1000)
+  modules: {
+    account: {
+      namespaced: true,
+
+      // 模块内容（module assets）
+      state: {
+        count: 0
+      }, // 模块内的状态已经是嵌套的了，使用 `namespaced` 属性不会对其产生影响
+      getters: {
+        isAdmin () { },
+        // -> getters['account/isAdmin']
+      },
+      actions: {
+        login () { },
+        addAsync ({ commit }) {
+          setTimeout(() => {
+            commit('add1')
+          }, 1000);
+        }
+        // -> dispatch('account/login')
+      },
+      mutations: {
+        login () { },
+        add1 (state) {
+          state.count++
+        },
+        dec1 (state) {
+          state.count--
+        }
+        // -> commit('account/login')
+      },
+
+      // 嵌套模块
+      modules: {
+        // 继承父模块的命名空间
+        myPage: {
+          state: () => ({}),
+          getters: {
+            profile () { } // -> getters['account/profile']
+          }
+        },
+
+        // 进一步嵌套命名空间
+        posts: {
+          namespaced: true,
+
+          state: () => ({}),
+          getters: {
+            popular () { } // -> getters['account/posts/popular']
+          }
+        }
+      }
     }
   }
 })
