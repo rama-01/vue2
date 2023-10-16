@@ -4,7 +4,7 @@
     <p>{{ count }}</p>
     <button @click="add1">add1</button>
     <button @click="$store.commit('account/dec1')">decrement1</button>
-    <button @click="$store.dispatch('account/addAsync')">add1 async</button>
+    <button @click="addAsync">add1 async</button>
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['account/addAsync']),
+    ...mapActions('account',['addAsync']),
     ...mapMutations('account', ['add1', 'dec1'])
   }
 }
