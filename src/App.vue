@@ -1,23 +1,12 @@
 <template>
   <div id="app">
-    {{message}}
+    <router-view />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
 export default {
-  data () {
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-    return {
-      app
-    }
-  }
+  name: 'App'
 }
 </script>
 

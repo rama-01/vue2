@@ -1,4 +1,5 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true
-})
+module.exports = {
+  // vue项目中关闭eslint
+  lintOnSave: false,
+  publicPath: './',
+}
