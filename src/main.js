@@ -11,6 +11,8 @@ import router from '@/router'
 // import 'element-ui/lib/theme-chalk/index.css';
 // Vue.use(ElementUI);
 
+import '@/assets/styles/tailwind/index.css'
+
 new Vue({
   router,
   render: h => h(App),
