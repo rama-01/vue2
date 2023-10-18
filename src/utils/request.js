@@ -3,11 +3,11 @@ import axios from 'axios'
 // 创建axios实例
 const service = axios.create({
   // axios中请求配置有baseURL选项，表示请求URL公共部分
-  baseURL: 'http://localhost:48080' + '/admin-api/', // 此处的 /admin-api/ 地址，原因是后端的基础路径为 /admin-api/
+  baseURL: 'http://localhost:48080' + '/admin-api', // 此处的 /admin-api/ 地址，原因是后端的基础路径为 /admin-api/
   // 超时
   timeout: 30000,
   // 禁用 Cookie 等信息
-  withCredentials: false,
+  // withCredentials: false,
 })
 
 // 添加请求拦截器
