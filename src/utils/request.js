@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
+
 // 创建axios实例
 const service = axios.create({
   // axios中请求配置有baseURL选项，表示请求URL公共部分
@@ -12,6 +14,7 @@ const service = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
+  console.log('request', config);
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
