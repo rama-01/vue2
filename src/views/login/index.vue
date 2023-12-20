@@ -5,28 +5,34 @@
         <h2 class="text-2xl font-bold mb-4">Login</h2>
         <form>
           <div class="mb-4">
-            <label for="email" class="block text-gray-700 font-bold mb-2"
-              >Account:</label
-            >
             <input
               name="account"
               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
-              placeholder="account"
+              placeholder="账号"
               v-model="loginForm.username"
             />
           </div>
           <div class="mb-4">
-            <label for="password" class="block text-gray-700 font-bold mb-2"
-              >Password:</label
-            >
             <input
               name="password"
               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
-              placeholder="password"
+              placeholder="密码"
               v-model="loginForm.password"
             />
+          </div>
+          <div class="mb-4 flex gap-2">
+            <input
+              name="password"
+              class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
+              required
+              placeholder="验证码"
+              v-model="loginForm.captchaCode"
+            />
+            <div>
+              <img class="login-code-img" :src="captcha" @click="getCode" />
+            </div>
           </div>
           <button
             class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -41,23 +47,35 @@
 </template>
 
 <script>
-import { visitorLogin } from '@/api/login'
+import { login, getCodeImg } from '@/api/login'
+
 export default {
-  data () {
+  data() {
     return {
       loginForm: {
-        username: 'admin',
-        password: 'admin123'
-      }
+        username: 'fuint',
+        password: '123456',
+        captchaCode: '',
+        uuid: ''
+      },
+      captcha: ''
     }
   },
+  created() {
+    this.getCode()
+  },
   methods: {
-    handleSubmitForm () {
-      visitorLogin().then(
-        () => this.$router.push({ path: '/dashboard' })
-      ).catch(error => {
-        return Promise.reject(error)
+    // 获取验证码
+    getCode() {
+      getCodeImg().then(({ data: { captcha, uuid } }) => {
+        this.captcha = captcha
+        this.loginForm.uuid = uuid
       })
+    },
+    handleSubmitForm() {
+      login(this.loginForm)
+        .then(() => this.$router.push({ path: '/dashboard' }))
+        .catch((error) => Promise.reject(error))
     }
   }
 }

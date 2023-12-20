@@ -1,8 +1,19 @@
 import request from '@/utils/request'
 
-// 游客登陆
-export const visitorLogin = () => request({
-  url: "/register/anonimous",
+// 获取验证码
+export const getCodeImg = () => request({
+  url: 'clientApi/captcha/getCode',
   method: 'get'
 })
 
+// 登录方法
+export const login = (data) =>{
+  return request({
+    url: 'backendApi/login/doLogin',
+    headers: {
+      isToken: false
+    },
+    method: 'post',
+    data
+  })
+}
