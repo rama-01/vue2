@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Layout from '@/layout'
 
 Vue.use(VueRouter);
 
-const routes = [
+// 公共路由
+const constantRoutes = [
   {
     path: '/',
     redirect: '/login',
@@ -16,10 +18,14 @@ const routes = [
     path: '/dashboard',
     component: () => import('@/views/dashboard')
   },
+  {
+    path: '/index',
+    component: Layout,
+  }
 ]
 
 const router = new VueRouter({
-  routes // routes: routes 的简写
+  routes: constantRoutes // routes: routes 的简写
 })
 
 export default router

@@ -31,7 +31,7 @@
               v-model="loginForm.captchaCode"
             />
             <div>
-              <img class="login-code-img" :src="captcha" @click="getCode" />
+              <img :src="captcha" @click="getCode" />
             </div>
           </div>
           <button
@@ -50,7 +50,7 @@
 import { getCodeImg } from '@/api/login'
 
 export default {
-  // name:"Login",
+  name: 'Login',
   data() {
     return {
       loginForm: {
@@ -76,7 +76,8 @@ export default {
     handleSubmitForm() {
       this.$store
         .dispatch('Login', this.loginForm)
-        .then(() => this.$router.push({ path: '/dashboard' }))
+        .then(() => this.$router.push({ path: '/index' }))
+        .catch(() => {})
     }
   }
 }

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getToken } from './auth';
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
@@ -14,7 +15,10 @@ const service = axios.create({
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
-  // console.log('request', config);
+  // 请求统一添加token
+  if (getToken()) {
+    config.headers['Access-Token'] = getToken()
+  }
   // 在发送请求之前做些什么
   return config;
 }, function (error) {

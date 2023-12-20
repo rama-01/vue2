@@ -7,16 +7,14 @@ export const getCodeImg = () => request({
 })
 
 // 登录方法
-export const login = (data) =>{
-  return request({
-    url: 'backendApi/login/doLogin',
-    headers: {
-      isToken: false
-    },
-    method: 'post',
-    data
-  })
-}
+export const login = (param) => request({
+  url: 'backendApi/login/doLogin',
+  headers: {
+    isToken: false
+  },
+  method: 'post',
+  data:param
+})
 
 // 获取登录相关信息
 export const getInfo = () => request({
