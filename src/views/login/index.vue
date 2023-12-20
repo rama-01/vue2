@@ -47,9 +47,10 @@
 </template>
 
 <script>
-import { login, getCodeImg } from '@/api/login'
+import { getCodeImg } from '@/api/login'
 
 export default {
+  // name:"Login",
   data() {
     return {
       loginForm: {
@@ -73,9 +74,9 @@ export default {
       })
     },
     handleSubmitForm() {
-      login(this.loginForm)
+      this.$store
+        .dispatch('Login', this.loginForm)
         .then(() => this.$router.push({ path: '/dashboard' }))
-        .catch((error) => Promise.reject(error))
     }
   }
 }

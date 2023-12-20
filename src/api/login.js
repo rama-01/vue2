@@ -17,3 +17,16 @@ export const login = (data) =>{
     data
   })
 }
+
+// 获取登录相关信息
+export const getInfo = () => request({
+  url: 'backendApi/login/getInfo',
+  method: 'get'
+})
+
+
+// 退出登录
+export const logout = () => request({
+  url: 'backendApi/login/logout',
+  method: 'post'
+})
