@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <router-view />
-  </div>
+  <div>report statistics</div>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
-  }
+    return {
+
+    }
+  },
 }
 </script>

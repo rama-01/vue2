@@ -1,17 +1,22 @@
 <template>
   <el-menu
-    default-active="2"
-    class="no-scrollbar overflow-y-scroll"
+    class="no-scrollbar overflow-y-scroll bg-gray-600"
     @open="handleOpen"
     @close="handleClose"
   >
-    <el-menu-item>系统首页</el-menu-item>
-    <el-submenu v-for="i in menu" :key="i.path" :index="i.path">
+    <el-menu-item> <i class="el-icon-location"></i>系统首页</el-menu-item>
+    <el-submenu
+      class="hover:bg-gray-800"
+      v-for="i in menu"
+      :key="i.path"
+      :index="i.path"
+    >
       <template slot="title">
         <i class="el-icon-location"></i>
-        <span>{{ i.meta.title }}</span>
+        <span class="text-white">{{ i.meta.title }}</span>
       </template>
       <el-menu-item
+        class="bg-gray-600 text-white hover:opacity-0"
         v-for="j in i.children.filter((i) => !i.hidden)"
         :key="j.path"
         :index="j.path"
@@ -41,7 +46,9 @@ export default {
     },
     getMenu() {
       getRouters().then(({ data }) => {
-        this.menu = data.filter((item) => !item.hidden)
+        if (data) {
+          this.menu = data.filter((item) => !item.hidden)
+        }
       })
     }
   }

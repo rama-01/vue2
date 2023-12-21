@@ -7,20 +7,18 @@ Vue.use(VueRouter);
 // 公共路由
 const constantRoutes = [
   {
-    path: '/',
-    redirect: '/login',
-  },
-  {
     path: '/login',
     component: () => import('@/views/login')
   },
   {
-    path: '/dashboard',
-    component: () => import('@/views/dashboard')
-  },
-  {
-    path: '/index',
+    path: '',
     component: Layout,
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/dashboard')
+      }
+    ]
   }
 ]
 
