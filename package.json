@@ -15,6 +15,7 @@
     "element-ui": "^2.15.14",
     "js-cookie": "3.0.1",
     "nprogress": "0.2.0",
+    "path-browserify": "^1.0.1",
     "sass": "1.32.13",
     "sass-loader": "10",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
