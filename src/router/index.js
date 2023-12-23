@@ -5,14 +5,16 @@ import Layout from '@/layout'
 Vue.use(VueRouter);
 
 // 公共路由
-const constantRoutes = [
+export const constantRoutes = [
   {
     path: '/login',
+    name:'Login',
     component: () => import('@/views/login')
   },
   {
     path: '',
     component: Layout,
+    redirect: 'index',
     children: [
       {
         path: 'index',
@@ -21,6 +23,8 @@ const constantRoutes = [
     ]
   }
 ]
+
+export const dynamicRoutes = []
 
 const router = new VueRouter({
   routes: constantRoutes // routes: routes 的简写

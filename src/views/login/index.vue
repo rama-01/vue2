@@ -76,7 +76,7 @@ export default {
     handleSubmitForm() {
       this.$store
         .dispatch('Login', this.loginForm)
-        .then(() => this.$router.push({ path: '/index' }))
+        .then(() => this.$router.push({ path: '/' }))
         .catch(() => {})
     }
   }

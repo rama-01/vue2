@@ -15,3 +15,14 @@
     }
   }
 }
+@layer components {
+  .title-col {
+    @apply h-11 pt-2.5 pl-2.5 text-left font-semibold bg-gray-200 
+  }
+  .cell {
+    @apply flex items-center gap-2 flex-1 p-5 border border-gray-300 h-24 cursor-pointer
+  }
+  .svg {
+    @apply w-10 h-10 p-2 border border-gray-300 rounded-full
+  }
+}

@@ -1,5 +1,8 @@
 <template>
-  <div>report statistics</div>
+  <div>
+    <div class="title-col">报表统计</div>
+
+  </div>
 </template>
 
 <script>
