@@ -12,5 +12,5 @@ module.exports = {
         options.postcssOptions = postcssConfig.plugins
         return options
       })
-  }
+  },
 }

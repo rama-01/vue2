@@ -3,7 +3,7 @@ import router, { constantRoutes, dynamicRoutes } from '@/router'
 import { getRouters } from '@/api/menu'
 import Layout from '@/layout/index'
 import ParentView from '@/components/parent-view'
-import InnerLink from '@/layout/components/InnerLink'
+import InnerLink from '@/layout/components/inner-link'
 
 const permission = {
   state: {

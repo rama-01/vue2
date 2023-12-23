@@ -2,10 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
-import '@/plugins/element-ui'
-import '@/assets/styles/tailwind/index.css'
-
 import request from "@/utils/request" // 实现 form generator 使用自己定义的 axios request 对象
+import '@/plugins/element-ui'
+import '@/assets/styles/index.scss'
 import './permission'  //permission control
 import '@/utils/umlib'
 Vue.prototype.$axios = request
