@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col gap-3">
-    <operation-overview class="flex-1" />
-    <common-function class="flex-1" />
-    <report-statistics class="flex-1" />
+  <div>
+    <operation-overview />
+    <common-function />
+    <report-statistics />
   </div>
 </template>
 

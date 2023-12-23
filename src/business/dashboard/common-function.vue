@@ -1,11 +1,11 @@
 <template>
-  <div class="border border-gray-300 shadow-xl">
+  <div class="border border-gray-300 shadow-xl my-2">
     <div class="title-col">常用功能</div>
     <div class="p-4">
       <div class="flex flex-nowrap gap-2 mb-2">
         <div
           class="cell"
-          v-for="index in 4"
+          v-for="index in 3"
           :key="index"
         >
           <img
@@ -18,7 +18,7 @@
       <div class="flex flex-nowrap gap-2">
         <div
           class="cell"
-          v-for="index in 4"
+          v-for="index in 3"
           :key="index"
         >
           <img

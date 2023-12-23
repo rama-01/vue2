@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import SideBar from './components/SideBar'
-import NavBar from './components/NavBar'
-import TagsView from './components/TagsView'
-import AppMain from './components/AppMain'
+import SideBar from './components/sidebar'
+import NavBar from './components/navbar'
+import TagsView from './components/tags-view'
+import AppMain from './components/app-main'
 export default {
   components: {
     SideBar,

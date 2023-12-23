@@ -2,7 +2,7 @@ import auth from '@/plugins/auth'
 import router, { constantRoutes, dynamicRoutes } from '@/router'
 import { getRouters } from '@/api/menu'
 import Layout from '@/layout/index'
-import ParentView from '@/components/ParentView'
+import ParentView from '@/components/parent-view'
 import InnerLink from '@/layout/components/InnerLink'
 
 const permission = {
