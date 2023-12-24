@@ -6,7 +6,7 @@ Vue.prototype.confirm = function (titleMsg, callback, successMsg, errorMsg) {
     cancelButtonText: "取消",
     type: "提示",
   }).then(() => {
-    callback();``
+    callback();
     if (successMsg) {
       Vue.prototype.$message({
         type: "success",

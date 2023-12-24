@@ -12,15 +12,19 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' })
     } else {
       // 当用户角色列表为空时，提示重新登录并获取用户信息
+      // **痛苦和磨难造就的伟人
+      // console.log(store.getters);
       if (store.getters.roles.length === 0) {
-        // store.dispatch('GetInfo').then(() => {
-        //   store.dispatch('GenerateRoutes').then(accessRoutes => {
-        //     router.addRoute(accessRoutes)
-        //     // console.log('accessRoutes', router);
-        //     next({ ...to, replace: true })
-        //   }).catch((err) => { console.log('err', err) })
-        // }).catch(() => { })
-        next()
+        store.dispatch('GetInfo').then(() => {
+          // console.log(123);
+          store.dispatch('GenerateRoutes').then(accessRoutes => {
+            router.addRoute(accessRoutes)
+            console.log('accessRoutes', router);
+            next({ ...to, replace: true })
+          })
+        }).catch((err) => {
+          // store.dispatch('LogOut').then(() => next({ path: '/' }))
+        })
       } else {
         next()
       }

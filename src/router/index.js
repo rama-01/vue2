@@ -27,7 +27,8 @@ export const constantRoutes = [
 export const dynamicRoutes = []
 
 const router = new VueRouter({
-  routes: constantRoutes // routes: routes 的简写
+  // mode: 'history',
+  routes: constantRoutes 
 })
 
 export default router
