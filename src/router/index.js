@@ -7,8 +7,19 @@ Vue.use(VueRouter);
 // 公共路由
 export const constantRoutes = [
   {
+    path: '/redirect',
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: '/redirect/:path(.*)',
+        component: () => import('@/views/redirect')
+      }
+    ]
+  },
+  {
     path: '/login',
-    name:'Login',
+    name: 'Login',
     component: () => import('@/views/login')
   },
   {
@@ -24,11 +35,12 @@ export const constantRoutes = [
   }
 ]
 
+// 动态路由
 export const dynamicRoutes = []
 
 const router = new VueRouter({
   // mode: 'history',
-  routes: constantRoutes 
+  routes: constantRoutes
 })
 
 export default router

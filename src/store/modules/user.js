@@ -39,8 +39,12 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, userInfo) {
+      const username = userInfo.username.trim()
+      const password = userInfo.password
+      const captchaCode = userInfo.captchaCode
+      const uuid = userInfo.uuid
       return new Promise((resolve, reject) => {
-        login(userInfo).then(res => {
+        login(username, password, captchaCode, uuid).then(res => {
           setToken(res.data.token)
           commit('SET_TOKEN', res.data.token)
           resolve()
@@ -53,9 +57,11 @@ const user = {
     // 获取用户信息
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
+        // **bug
         getInfo().then(res => {
+          console.log('get info success');
           const user = res.data.accountInfo
-          // const avatar = (user.avatar == "" || user.avatar == null) ? require("@/assets/images/avatar.png") : process.env.VUE_APP_BASE_API + user.avatar;
+          const avatar = (user.avatar == "" || user.avatar == null) ? require("@/assets/images/avatar.png") : 'http://localhost:81' + '/dev-api' + user.avatar;
           if (res.data.roles && res.data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_ROLES', res.data.roles)
             commit('SET_PERMISSIONS', res.data.permissions)
@@ -68,6 +74,7 @@ const user = {
           commit('SET_STORE_NAME', user.storeName)
           resolve(res)
         }).catch(error => {
+          console.log('get info error');
           reject(error)
         })
       })

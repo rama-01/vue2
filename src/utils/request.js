@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 import { getToken } from './auth';
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
