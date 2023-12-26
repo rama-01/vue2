@@ -77,7 +77,7 @@ export default {
       this.$store
         .dispatch('Login', this.loginForm)
         .then(() => {
-          this.$router.push({ path: '/index' })
+          this.$router.push({ path: this.redirect || '/' }).catch(() => {})
         })
         .catch(() => {})
     }

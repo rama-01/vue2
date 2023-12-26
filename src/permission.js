@@ -16,16 +16,19 @@ router.beforeEach((to, from, next) => {
         console.log(111);
         store.dispatch('GetInfo')
           .then(() => {
-            store.dispatch('GenerateRoutes').then(accessRoutes => {
-              router.addRoute(accessRoutes)
-              next({ ...to, replace: true })
-            })
+            console.log(222);
+            store.dispatch('GenerateRoutes')
+              .then(accessRoutes => {
+                console.log('access', accessRoutes);
+                router.addRoutes(accessRoutes)
+                next({ ...to, replace: true })
+              })
           })
           .catch((err) => {
             console.log(123);
-            // store.dispatch('LogOut').then(() => {
-            //   next({ path: '/' })
-            // })
+            store.dispatch('LogOut').then(() => {
+              next({ path: '/' })
+            })
           })
       } else {
         console.log(124);
