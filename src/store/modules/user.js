@@ -59,7 +59,6 @@ const user = {
       return new Promise((resolve, reject) => {
         // **bug
         getInfo().then(res => {
-          console.log('get info success');
           const user = res.data.accountInfo
           const avatar = (user.avatar == "" || user.avatar == null) ? require("@/assets/images/avatar.png") : 'http://localhost:81' + '/dev-api' + user.avatar;
           if (res.data.roles && res.data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
@@ -74,7 +73,6 @@ const user = {
           commit('SET_STORE_NAME', user.storeName)
           resolve(res)
         }).catch(error => {
-          console.log('get info error');
           reject(error)
         })
       })

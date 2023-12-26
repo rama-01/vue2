@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Layout from '@/layout'
 
-Vue.use(VueRouter);
+Vue.use(Router);
 
 // 公共路由
 export const constantRoutes = [
@@ -81,7 +81,13 @@ export const dynamicRoutes = [
   }
 ]
 
-const router = new VueRouter({
+// 防止连续点击多次路由报错
+let routerPush = Router.prototype.push;
+Router.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(err => err)
+}
+
+const router = new Router({
   // mode: 'history',
   routes: constantRoutes
 })

@@ -22,7 +22,7 @@
         v-for="j in i.children.filter((i) => !i.hidden)"
         :key="j.path"
         :index="j.path"
-        @click="fn(i, j)"
+        @click="$router.push({ path: j.path })"
         >{{ j.meta.title }}</el-menu-item
       >
     </el-submenu>
@@ -53,9 +53,6 @@ export default {
           this.menu = data.filter((item) => !item.hidden)
         }
       })
-    },
-    fn(i, j) {
-      this.$router.push({ path: j.path })
     }
   }
 }

@@ -1,11 +1,13 @@
 <template>
-  <div>point</div>
+  <div>coupon group</div>
 </template>
 
 <script>
 export default {
   data() {
-    return {}
-  }
+    return {
+
+    }
+  },
 }
 </script>

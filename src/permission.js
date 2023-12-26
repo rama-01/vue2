@@ -11,27 +11,22 @@ router.beforeEach((to, from, next) => {
       next({ path: '/' })
     } else {
       // 当用户角色列表为空时，提示重新登录并获取用户信息
-      console.log(store.getters);
       if (store.getters.roles.length === 0) {
-        console.log(111);
         store.dispatch('GetInfo')
           .then(() => {
-            console.log(222);
             store.dispatch('GenerateRoutes')
               .then(accessRoutes => {
-                console.log('access', accessRoutes);
                 router.addRoutes(accessRoutes)
+                console.log('router',router);
                 next({ ...to, replace: true })
               })
           })
           .catch((err) => {
-            console.log(123);
             store.dispatch('LogOut').then(() => {
               next({ path: '/' })
             })
           })
       } else {
-        console.log(124);
         next()
       }
     }
@@ -43,3 +38,4 @@ router.beforeEach((to, from, next) => {
     }
   }
 })
+
