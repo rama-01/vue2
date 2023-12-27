@@ -17,5 +17,10 @@ Vue.prototype.$tableHeight = tableHeight
 new Vue({
   store,
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
+
+
+
+
