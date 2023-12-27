@@ -7,8 +7,12 @@ import '@/plugins/element-ui'
 import '@/assets/styles/index.scss'
 import './permission'  //permission control
 import '@/utils/umlib'
-Vue.prototype.$axios = request
+Vue.prototype.$axios = request //?
 Vue.config.productionTip = false
+
+// 计算表格自适应高度
+import tableHeight from '@/utils/tableHeight.js'
+Vue.prototype.$tableHeight = tableHeight
 
 new Vue({
   store,

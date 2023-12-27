@@ -1,6 +1,9 @@
 import axios from 'axios'
-import store from '@/store'
 import { getToken } from './auth';
+import {
+  showFullScreenLoading,
+  tryHideFullScreenLoading
+} from './loading'
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 
@@ -20,10 +23,13 @@ service.interceptors.request.use(function (config) {
   if (getToken()) {
     config.headers['Access-Token'] = getToken()
   }
+  config.isLoading = config.isLoading !== undefined && config.isLoading !== null ? config.isLoading : false
+  showFullScreenLoading(config)
   // 在发送请求之前做些什么
   return config;
 }, function (error) {
   // 对请求错误做些什么
+  tryHideFullScreenLoading()
   return Promise.reject(error);
 });
 
@@ -31,6 +37,7 @@ service.interceptors.request.use(function (config) {
 service.interceptors.response.use(function (response) {
   // 2xx 范围内的状态码都会触发该函数。
   // 对响应数据做点什么
+  tryHideFullScreenLoading()
   return response.data;
 }, function (error) {
   // 超出 2xx 范围的状态码都会触发该函数。

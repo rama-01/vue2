@@ -1,0 +1,69 @@
+.el-form {
+  .el-form-item {
+    height: 32px;
+    margin: 0;
+    .el-input__inner,
+    .el-input {
+      height: 32px;
+      line-height: 32px; //必须设置行高
+    }
+    .el-form-item__label {
+      line-height: 32px;
+      height: 32px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .el-form-item__content {
+      height: 32px;
+      line-height: 32px; //必须设置行高
+    }
+  }
+  .el-select .el-input .el-select__caret {
+    height: 32px;
+    line-height: 32px;
+  }
+}
+
+.el-table {
+  .cell {
+    padding: 10px 0 !important;
+    // height: fit-content;
+    height: auto;
+    border: none;
+  }
+  .el-table__cell {
+    padding: 0;
+  }
+}
+
+/*隐藏滚动条*/
+.hidden-scrollbar {
+  -ms-overflow-style: none;
+  /* IE 10+ 隐藏滚动条*/
+  scrollbar-width: none;
+
+  /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+// 按钮样式
+.el-button {
+  padding: 7px 15px;
+  font-size: 12px;
+}
+// 搜索
+.searchBtn {
+  color: #fff;
+  background-color: #00acac;
+}
+
+.resetBtn {
+  color: #333;
+  background-color: #fff;
+}
+
+.addBtn {
+  color: #00acac;
+  background-color: #e6f7f7;
+}

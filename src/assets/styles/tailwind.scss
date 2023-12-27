@@ -5,24 +5,30 @@
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
     .no-scrollbar::-webkit-scrollbar {
-        display: none;
+      display: none;
     }
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+      -ms-overflow-style: none;
+      /* IE 10+ 隐藏滚动条*/
+      scrollbar-width: none;
+
+      /* Firefox */
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 }
 @layer components {
   .title-col {
-    @apply h-11 pt-2.5 pl-2.5 text-left font-semibold bg-gray-200 
+    @apply h-11 pt-2.5 pl-2.5 text-left font-semibold bg-gray-200;
   }
   .cell {
-    @apply flex items-center gap-2 flex-1 p-5 border border-gray-300 h-24 cursor-pointer
+    @apply flex items-center gap-2 flex-1 p-5 border border-gray-300 h-24 cursor-pointer;
   }
   .svg {
-    @apply w-10 h-10 p-2 border border-gray-300 rounded-full
+    @apply w-10 h-10 p-2 border border-gray-300 rounded-full;
   }
 }

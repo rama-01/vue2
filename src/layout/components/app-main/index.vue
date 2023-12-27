@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-auto">
+  <div>
     <router-view />
   </div>
 </template>

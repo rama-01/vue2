@@ -17,7 +17,6 @@ router.beforeEach((to, from, next) => {
             store.dispatch('GenerateRoutes')
               .then(accessRoutes => {
                 router.addRoutes(accessRoutes)
-                console.log('router',router);
                 next({ ...to, replace: true })
               })
           })

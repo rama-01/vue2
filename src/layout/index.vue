@@ -1,10 +1,10 @@
 <template>
-  <div class="w-screen h-screen flex">
+  <div class="flex h-full hidden-scrollbar">
     <side-bar class="w-48 h-full" />
-    <div class="flex flex-1 flex-col">
+    <div class="flex-1 h-full">
       <nav-bar class="h-12" />
       <tags-view class="h-7" />
-      <app-main class="flex-1 p-5" />
+      <app-main class="p-5" />
     </div>
   </div>
 </template>
@@ -23,8 +23,7 @@ export default {
   },
   data() {
     return {}
-  }
+  },
+  created() {}
 }
 </script>
-
-<style lang="scss" scoped></style>

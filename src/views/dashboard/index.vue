@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-full">
     <operation-overview />
     <common-function />
     <report-statistics />
