@@ -24,6 +24,15 @@
   }
 }
 
+.el-dialog {
+  // 覆盖以上表单样式
+  .el-form {
+    .el-form-item {
+      margin-bottom: 22px;
+    }
+  }
+}
+
 .el-table {
   .cell {
     padding: 10px 0 !important;
