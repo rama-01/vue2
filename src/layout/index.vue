@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-full hidden-scrollbar">
     <side-bar class="w-48 h-full" />
-    <div class="flex-1 h-full">
+    <div class="flex-1 h-full overflow-auto">
       <nav-bar class="h-12" />
       <tags-view class="h-7" />
       <app-main class="p-5" />

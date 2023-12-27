@@ -1,6 +1,6 @@
 <template>
   <el-menu
-    class="no-scrollbar bg-gray-600 h-full"
+    class="no-scrollbar bg-gray-600 h-full overflow-auto"
     @open="handleOpen"
     @close="handleClose">
     <el-menu-item class="text-white" @click="$router.push('/')">
@@ -56,7 +56,10 @@ export default {
 ::v-deep .el-submenu__title {
   background-color: rgba(55, 65, 81) !important;
 }
-.el-menu-item:hover {
-  background-color: rgba(55, 65, 81) !important;
+.el-menu-item {
+  width: 100% !important;
+  &:hover {
+    background-color: rgba(55, 65, 81) !important;
+  }
 }
 </style>
