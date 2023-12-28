@@ -13,4 +13,6 @@
   //或者使用modifier修饰符
   <text-document v-bind:title.sync="doc.title"></text-document>
   ```
+  3. vscode点击文件路径无法跳转
+  
   

@@ -3,11 +3,11 @@
     <img
       src="@/assets/images/avatar.png"
       alt="avatar"
-      class="w-9 h-9 rounded-full mr-1"
-    />
+      class="w-9 h-9 rounded-full mr-1" />
     <el-dropdown class="mr-7">
       <span class="el-dropdown-link">
-        fuint<i class="el-icon-arrow-down el-icon--right"></i>
+        fuint
+        <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>布局设置</el-dropdown-item>
@@ -23,7 +23,7 @@ export default {
     return {}
   },
   methods: {
-    async logout() {
+    logout() {
       this.confirm('确定注销并退出系统吗？', () => {
         this.$store.dispatch('LogOut').then(() => {
           location.href = '/'

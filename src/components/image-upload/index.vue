@@ -1,7 +1,6 @@
 <template>
   <div class="component-upload-image">
     <el-upload
-      ref="el-upload"
       multiple
       :action="uploadImgUrl"
       list-type="picture-card"
@@ -71,9 +70,9 @@ export default {
     isShowTip: {
       type: Boolean,
       default: true
-    },
-    width: String,
-    height: String
+    }
+    // width: String,
+    // height: String
   },
   data() {
     return {
@@ -92,8 +91,8 @@ export default {
   },
   mounted() {
     // 设置组件显示宽高
-    this.$refs['el-upload'].style.width = this.width
-    this.$refs['el-upload'].style.height = this.height
+    // this.$refs['component-upload-image'].style.width = this.width
+    // this.$refs['component-upload-image'].style.height = this.height
   },
   watch: {
     value: {
@@ -221,5 +220,10 @@ export default {
 .el-list-leave-active {
   opacity: 0;
   transform: translateY(0);
+}
+
+::v-deep .el-upload--picture-card {
+  width: 100%;
+  height: 100%;
 }
 </style>
