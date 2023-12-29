@@ -8,7 +8,10 @@
       :articleList="articleList"
       :tableHeight="tableHeight"
       @action-event="handleActionEvent"></Table>
-    <edit-popup :visible.sync="editPopup.visible" :data="editPopup.data" />
+    <edit-popup
+      :visible.sync="editPopup.visible"
+      :data="editPopup.data"
+      @action-event="handleActionEvent" />
   </div>
 </template>
 
@@ -35,7 +38,7 @@ export default {
       queryParams: {
         //文章列表查询参数
         pageNum: 1,
-        pageSize: 10,
+        pageSize: 100,
         title: '',
         status: ''
       }
@@ -79,11 +82,16 @@ export default {
           })
           break
         case 'reset':
+          this.queryParams.title = ''
+          this.queryParams.status = ''
           this.getList()
           break
         case 'search':
           this.queryParams.title = data.title
           this.queryParams.status = data.status
+          this.getList()
+          break
+        case 'addArticle':
           this.getList()
           break
       }

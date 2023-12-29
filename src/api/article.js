@@ -14,3 +14,11 @@ export const updateArticle = (params) => request({
   data: params,
   isLoading: true
 })
+
+// 新增或编辑文章
+export const editSingleArticle = (params) => request({
+  url: '/backendApi/article/save',
+  method: 'post',
+  data: params,
+  isLoading: true
+})

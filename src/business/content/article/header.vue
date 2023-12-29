@@ -21,7 +21,7 @@
         size="mini"
         icon="el-icon-refresh"
         class="resetBtn"
-        @click="handleReset">
+        @click="$emit('action-event', 'reset')">
         重置
       </el-button>
       <el-button
@@ -45,15 +45,6 @@ export default {
       }
     }
   },
-  methods: {
-    // 重置搜索参数并刷新表格
-    handleReset() {
-      this.form = {
-        title: '',
-        status: ''
-      }
-      this.$emit('action-event', 'reset')
-    }
-  }
+  methods: {}
 }
 </script>
