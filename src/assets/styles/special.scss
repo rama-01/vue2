@@ -70,6 +70,10 @@
   }
 }
 
+.pagination-container.hidden {
+  display: none;
+}
+
 /*隐藏滚动条*/
 .hidden-scrollbar {
   -ms-overflow-style: none;

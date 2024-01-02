@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css';
 //按需引入
-import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup } from 'element-ui';
+import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup, Pagination, Switch } from 'element-ui';
 //也可以写为
 Vue.use(Button)
 Vue.use(Menu)
@@ -24,6 +24,8 @@ Vue.use(TableColumn)
 Vue.use(Upload)
 Vue.use(Radio)
 Vue.use(RadioGroup)
+Vue.use(Pagination)
+Vue.use(Switch)
 
 
 // Vue.use(MessageBox)  //这里不能use方法，否则刷新页面会先执行一次

@@ -3,7 +3,7 @@
     title="提示"
     width="50%"
     :close-on-click-modal="false"
-    @close="$emit('update:visible', false)"
+    @close="handleCloseDialog"
     append-to-body
     :visible="visible">
     <el-form ref="form" :model="form" label-width="80px" :rules="rules">
@@ -45,7 +45,7 @@
       </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
-      <el-button @click="$emit('update:visible', false)">取消</el-button>
+      <el-button @click="handleCloseDialog">取消</el-button>
       <el-button class="confirmBtn" @click="handleSubmitForm">确定</el-button>
     </span>
   </el-dialog>
@@ -83,16 +83,33 @@ export default {
   },
   methods: {
     handleSubmitForm() {
-      debugger
       this.$refs.form.validate((valid) => {
         if (valid) {
           editSingleArticle(this.form).then(() => {
-            this.$emit('update:visible', false)
+            this.handleCloseDialog()
             this.$emit('action-event', 'addArticle')
-            this.$message('新增成功')
+            this.$message({
+              message: '新增成功',
+              type: 'success'
+            })
           })
         }
       })
+    },
+    handleCloseDialog() {
+      this.$emit('update:visible', false)
+      // 重置表格
+      // this.$refs.form.resetFields() //不生效？
+      this.form = {
+        brief: '',
+        description: '',
+        id: '',
+        image: '',
+        sort: 0,
+        status: 'A',
+        storeId: 0,
+        title: ''
+      }
     }
   }
 }

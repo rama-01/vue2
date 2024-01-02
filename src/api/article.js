@@ -22,3 +22,10 @@ export const editSingleArticle = (params) => request({
   data: params,
   isLoading: true
 })
+
+export const updateArticleStatus = (params) => request({
+  url: '/backendApi/article/updateStatus',
+  method: 'post',
+  data: params,
+  isLoading: true
+})
