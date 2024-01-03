@@ -74,6 +74,11 @@
   display: none;
 }
 
+// 加载中svg居中
+.el-loading-mask.is-fullscreen .el-loading-spinner .circular {
+  margin: auto;
+}
+
 /*隐藏滚动条*/
 .hidden-scrollbar {
   -ms-overflow-style: none;

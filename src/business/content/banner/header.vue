@@ -1,12 +1,15 @@
 <template>
   <el-form
-    class="flex flex-shrink items-center gap-3 mb-2 max-h-20"
+    class="flex flex-wrap max-h-19 items-center gap-3 mb-2 max-h-20"
     ref="form"
     :model="form">
-    <el-form-item class="flex" label="文章标题">
-      <el-input v-model="form.title" placeholder="请输入文章标题"></el-input>
+    <el-form-item class="flex" label="标题">
+      <el-input v-model="form.title" placeholder="请输入标题"></el-input>
     </el-form-item>
-    <el-form-item class="flex" label="状态">
+    <el-form-item class="flex" label="所属店铺">
+      <el-select v-model="form.status" placeholder="所属店铺"></el-select>
+    </el-form-item>
+    <el-form-item class="flex w-40" label="状态">
       <el-select v-model="form.status" placeholder="状态">
         <el-option label="启用" value="A"></el-option>
         <el-option label="禁用" value="N"></el-option>

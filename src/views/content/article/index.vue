@@ -64,6 +64,7 @@ export default {
       })
     })
   },
+  mounted() {},
   methods: {
     getList() {
       getArticleList(this.queryParams).then(

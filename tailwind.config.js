@@ -1,7 +1,4 @@
 module.exports = {
-  // important: true,
-  // content: ["./src/**/*.{html,js}"],
-  // 或
   content: [
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}",
@@ -10,6 +7,9 @@ module.exports = {
     extend: {
       margin: {
         '19': "19px"
+      },
+      minWidth: {
+        '900': '900px'
       }
     },
   }
