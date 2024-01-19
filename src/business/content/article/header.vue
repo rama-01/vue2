@@ -1,6 +1,6 @@
 <template>
   <el-form
-    class="flex flex-shrink items-center gap-3 mb-2 max-h-20"
+    class="flex flex-wrap items-center gap-3 mb-2 max-h-20"
     ref="form"
     :model="form">
     <el-form-item class="flex" label="文章标题">
@@ -12,7 +12,7 @@
         <el-option label="禁用" value="N"></el-option>
       </el-select>
     </el-form-item>
-    <el-form-item>
+    <el-form-item class="flex-shrink">
       <el-button
         size="mini"
         icon="el-icon-search"

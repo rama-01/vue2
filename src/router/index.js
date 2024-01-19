@@ -12,7 +12,7 @@ export const constantRoutes = [
     hidden: true,
     children: [
       {
-        path: '/redirect/:path(.*)',
+        path: '/redirect/:path(.*)',  //该路由可以匹配以 /redirect/ 开头的任意路径，并将匹配到的路径作为参数 path 传递给对应的组件
         component: () => import('@/views/redirect')
       }
     ]

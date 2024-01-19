@@ -20,7 +20,7 @@
     </el-table-column>
     <el-table-column prop="operator" label="创建者" />
     <el-table-column prop="createTime" label="创建时间" />
-    <el-table-column prop="address" label="操作" width="125">
+    <el-table-column prop="address" label="操作" width="125" fixed="right">
       <template slot-scope="{ row }">
         <el-button
           style="padding: 0"

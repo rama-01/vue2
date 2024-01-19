@@ -1,65 +1,78 @@
 <template>
-  <el-menu
-    class="no-scrollbar bg-gray-600 h-full overflow-auto"
-    @open="handleOpen"
-    @close="handleClose">
-    <el-menu-item class="text-white" @click="$router.push('/')">
-      <i class="el-icon-location float-left mt-19"></i>
-      系统首页
-    </el-menu-item>
-    <el-submenu v-for="i in menu" :key="i.path" :index="i.path">
-      <template slot="title">
-        <i class="el-icon-location float-left mt-19"></i>
-        <span class="text-white text-left">{{ i.meta.title }}</span>
-      </template>
-      <el-menu-item
-        class="bg-gray-600 text-white"
-        v-for="j in i.children.filter((i) => !i.hidden)"
-        :key="j.path"
-        :index="j.path"
-        @click="$router.push({ path: j.path })">
-        {{ j.meta.title }}
-      </el-menu-item>
-    </el-submenu>
-  </el-menu>
+  <div :class="{ 'has-logo': showLogo }">
+    <logo v-if="showLogo" :collapse="isCollapse" />
+    <div v-if="isStore" class="store-info">
+      <span class="name">{{ isStore }}</span>
+    </div>
+    <el-menu
+      :default-active="activeMenu"
+      :collapse="isCollapse"
+      :unique-opened="true"
+      :collapse-transition="false"
+      mode="vertical">
+      <sidebar-item
+        v-for="(route, index) in sidebarRouters"
+        :key="route.path + index"
+        :item="route"
+        :base-path="route.path" />
+    </el-menu>
+  </div>
 </template>
 
 <script>
-import { getRouters } from '@/api/menu'
+import { mapGetters, mapState } from 'vuex'
+import Logo from './Logo'
+import SidebarItem from './SidebarItem'
+import variables from '@/assets/styles/variables.scss'
+
 export default {
-  data() {
-    return {
-      menu: []
-    }
-  },
-  created() {
-    this.getMenu()
-  },
-  methods: {
-    handleOpen(key, keyPath) {
-      // console.log(key, keyPath)
+  components: { SidebarItem, Logo },
+  computed: {
+    ...mapState(['settings']),
+    ...mapGetters(['sidebarRouters', 'sidebar']),
+    activeMenu() {
+      const route = this.$route
+      const { meta, path } = route
+      // if set path, the sidebar will highlight the path you set
+      if (meta.activeMenu) {
+        return meta.activeMenu
+      }
+      return path
     },
-    handleClose(key, keyPath) {
-      // console.log(key, keyPath)
+    showLogo() {
+      // return this.$store.state.settings.sidebarLogo;
     },
-    getMenu() {
-      getRouters().then(({ data }) => {
-        if (data) {
-          this.menu = data.filter((item) => !item.hidden)
-        }
-      })
+    variables() {
+      return variables
+    },
+    isCollapse() {
+      // return !this.sidebar.opened;
+    },
+    isStore() {
+      if (this.$store.getters.storeName && this.$store.getters.storeId) {
+        return this.$store.getters.storeName
+      }
+      return ''
     }
   }
 }
 </script>
+
 <style lang="scss" scoped>
-::v-deep .el-submenu__title {
-  background-color: rgba(55, 65, 81) !important;
-}
-.el-menu-item {
-  width: 100% !important;
-  &:hover {
-    background-color: rgba(55, 65, 81) !important;
+.store-info {
+  height: 38px;
+  text-align: center;
+  padding-top: 10px;
+  background: #00acac;
+  overflow: hidden;
+  border-radius: 5px;
+  margin: 0px 6px 10px 6px;
+  .name {
+    font-weight: bold;
+    font-size: 13px;
+    color: #ffffff;
+    text-align: center;
+    overflow: hidden;
   }
 }
 </style>
