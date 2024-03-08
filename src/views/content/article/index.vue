@@ -28,6 +28,7 @@ import pagination from '@/components/pagination'
 import { updateArticle, getArticleList } from '@/api/article'
 
 export default {
+  name: 'article',
   components: {
     Header,
     Table,
@@ -68,11 +69,7 @@ export default {
   methods: {
     getList() {
       getArticleList(this.queryParams).then(
-        ({
-          data: {
-            dataList: { content, totalElements }
-          }
-        }) => {
+        ({ dataList: { content, totalElements } }) => {
           this.articleList = content
           this.total = totalElements
         }
@@ -84,18 +81,16 @@ export default {
           this.editPopup.visible = true
           break
         case 'edit':
+          this.editPopup.data = data
           this.editPopup.visible = true
           break
         case 'delete':
-          this.confirm(
-            `是否确认删除文章ID为"${data.id}"的数据项`,
-            () => {
-              updateArticle({ id: data.id, status: 'D' })
-                .then(() => this.getList())
-                .catch(() => this.$message('删除失败！'))
-            },
-            '删除成功!'
-          )
+          this.confirm(`是否确认删除文章ID为"${data.id}"的数据项`, () => {
+            updateArticle({ id: data.id, status: 'D' }).then(() =>
+              this.getList()
+            )
+            // .catch((err) => console.log(err))
+          })
           break
         case 'reset':
           this.queryParams.title = ''

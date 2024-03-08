@@ -10,8 +10,7 @@
               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
               placeholder="账号"
-              v-model="loginForm.username"
-            />
+              v-model="loginForm.username" />
           </div>
           <div class="mb-4">
             <input
@@ -19,8 +18,7 @@
               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
               placeholder="密码"
-              v-model="loginForm.password"
-            />
+              v-model="loginForm.password" />
           </div>
           <div class="mb-4 flex gap-2">
             <input
@@ -28,16 +26,14 @@
               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:border-indigo-500"
               required
               placeholder="验证码"
-              v-model="loginForm.captchaCode"
-            />
+              v-model="loginForm.captchaCode" />
             <div>
               <img :src="captcha" @click="getCode" />
             </div>
           </div>
           <button
             class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            @click.prevent="handleSubmitForm"
-          >
+            @click.prevent="handleSubmitForm">
             Login
           </button>
         </form>
@@ -68,7 +64,7 @@ export default {
   methods: {
     // 获取验证码
     getCode() {
-      getCodeImg().then(({ data: { captcha, uuid } }) => {
+      getCodeImg().then(({ captcha, uuid }) => {
         this.captcha = captcha
         this.loginForm.uuid = uuid
       })

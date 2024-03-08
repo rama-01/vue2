@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-Vue.prototype.confirm = function (titleMsg, callback, successMsg, errorMsg = '已取消') {
+Vue.prototype.confirm = function (titleMsg, callback, successMsg = '删除成功', errorMsg = '已取消') {
   Vue.prototype.$confirm(titleMsg, "提示", {
     confirmButtonText: "确定",
     cancelButtonText: "取消",

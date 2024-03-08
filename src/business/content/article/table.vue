@@ -56,15 +56,19 @@ export default {
   methods: {
     handleSwitchChange(id, status, title) {
       const text = status === 'A' ? '启用' : '禁用'
-      this.confirm(`确认要${text}${title}吗?`, () => {
-        updateArticleStatus({ id, status }).then(() => {
-          this.$emit('action-event', 'update-status')
-          this.$message({
-            message: text + '成功',
-            type: 'success'
+      this.confirm(
+        `确认要${text}${title}吗?`,
+        () => {
+          updateArticleStatus({ id, status }).then(() => {
+            this.$emit('action-event', 'update-status')
+            this.$message({
+              message: text + '成功',
+              type: 'success'
+            })
           })
-        })
-      })
+        },
+        null
+      )
     }
   }
 }

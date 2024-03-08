@@ -12,8 +12,7 @@
           :data-list="chartData1"
           width="100%"
           id="chart1"
-          height="400px"
-        />
+          height="400px" />
       </el-col>
       <el-col class="item" :span="12">
         <commonChart
@@ -25,15 +24,14 @@
           :data-list="chartData2"
           width="100%"
           id="chart2"
-          height="400px"
-        />
+          height="400px" />
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import { getHomeData, getStatisticData } from "@/api/home";
+import { getHomeData, getStatisticData } from '@/api/home'
 import CommonChart from '@/components/charts'
 export default {
   components: {
@@ -76,8 +74,8 @@ export default {
     // 查询首页数据
     getHomeData() {
       this.loading = true
-      getHomeData().then((response) => {
-        this.homeData = response.data
+      getHomeData().then((res) => {
+        this.homeData = res
         this.loading = false
       })
     },
@@ -86,14 +84,14 @@ export default {
       const app = this
       app.loading = true
       // 近7日订单数量和活跃会员数量
-      getStatisticData({ tag: 'order,user_active' }).then((response) => {
-        const data = response.data
-        const labelData1 = data.data[0] ? data.data[0] : []
-        const labelData2 = data.data[1] ? data.data[1] : []
+      getStatisticData({ tag: 'order,user_active' }).then((res) => {
+        // console.log(123, res)
+        const labelData1 = res.data[0] ? res.data[0] : []
+        const labelData2 = res.data[1] ? res.data[1] : []
         const dataList1 = []
         const dataList2 = []
 
-        data.labels.forEach(function (label, index) {
+        res.labels.forEach(function (label, index) {
           const value1 = labelData1[index] ? labelData1[index] : 0
           const value2 = labelData2[index] ? labelData2[index] : 0
           dataList1.push({ name: label, value0: value1 })

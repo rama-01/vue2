@@ -45,8 +45,8 @@ const user = {
       const uuid = userInfo.uuid
       return new Promise((resolve, reject) => {
         login(username, password, captchaCode, uuid).then(res => {
-          setToken(res.data.token)
-          commit('SET_TOKEN', res.data.token)
+          setToken(res.token)
+          commit('SET_TOKEN', res.token)
           resolve()
         }).catch(error => {
           reject(error)
@@ -59,11 +59,11 @@ const user = {
       return new Promise((resolve, reject) => {
         // **bug
         getInfo().then(res => {
-          const user = res.data.accountInfo
+          const user = res.accountInfo
           const avatar = (user.avatar == "" || user.avatar == null) ? require("@/assets/images/avatar.png") : 'http://localhost:81' + '/dev-api' + user.avatar;
-          if (res.data.roles && res.data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_ROLES', res.data.roles)
-            commit('SET_PERMISSIONS', res.data.permissions)
+          if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+            commit('SET_ROLES', res.roles)
+            commit('SET_PERMISSIONS', res.permissions)
           } else {
             commit('SET_ROLES', ['ROLE_DEFAULT'])
           }

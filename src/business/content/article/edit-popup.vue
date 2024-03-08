@@ -81,6 +81,11 @@ export default {
       }
     }
   },
+  watch: {
+    data(newVal) {
+      this.form = newVal
+    }
+  },
   methods: {
     handleSubmitForm() {
       this.$refs.form.validate((valid) => {

@@ -116,3 +116,17 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.el-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+::v-deep .el-submenu__title {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 20px;
+  }
+}
+</style>

@@ -14,5 +14,5 @@
   <text-document v-bind:title.sync="doc.title"></text-document>
   ```
   3. vscode点击文件路径无法跳转
-  
-  
+  4. vue2父子组件生命周期执行顺序
+  执行的先后顺序为 父beforeCreate->父created->父beforeMount->子beforeCreate->子created->子beforeMount->子mounted->父mounted

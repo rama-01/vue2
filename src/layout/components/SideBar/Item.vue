@@ -1,4 +1,4 @@
-<script>
+k<script>
 export default {
   name: 'MenuItem',
   functional: true,
