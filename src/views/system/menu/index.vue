@@ -2,11 +2,15 @@
   <div>
     <div class="flex justify-start">
       <el-button class="addBtn">+ 新增</el-button>
-      <el-button class="expandCollapseBtn">+ 展开/折叠</el-button>
+      <el-button class="expandCollapseBtn" @click="handleToggleExpandAll"
+        >+ 展开/折叠</el-button
+      >
     </div>
     <Table
       :treeData="treeData"
       :tableHeight="tableHeight"
+      :isExpand="isExpand"
+      :refreshTable="refreshTable"
       @action-event="handleActionEvent"
     />
   </div>
@@ -25,6 +29,8 @@ export default {
     return {
       treeData: [],
       tableHeight: null,
+      isExpand: false, //默认不展开
+      refreshTable: true,
     };
   },
   created() {
@@ -53,6 +59,12 @@ export default {
           );
           break;
       }
+    },
+    handleToggleExpandAll() {
+      this.refreshTable = false;
+      this.isExpand = !this.isExpand;
+      this.$nextTick(() => (this.refreshTable = true));
+      // this.refreshTable = true;
     },
   },
 };

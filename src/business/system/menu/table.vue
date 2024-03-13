@@ -1,10 +1,12 @@
 <template>
   <el-table
+    v-if="refreshTable"
     :data="treeData"
     :height="tableHeight"
     style="width: 100%"
     row-key="id"
     border
+    :default-expand-all="isExpand"
     :tree-props="{ children: 'childrens' }"
   >
     <el-table-column prop="name" label="菜单" width="180"> </el-table-column>
@@ -70,9 +72,22 @@ export default {
       },
     },
     tableHeight: null,
+    refreshTable: {
+      type: Boolean,
+      default() {
+        return true;
+      },
+    },
+    isExpand: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
   },
   data() {
-    return {};
+    return {
+    };
   },
   methods: {},
 };
