@@ -64,7 +64,6 @@ export default {
       this.refreshTable = false;
       this.isExpand = !this.isExpand;
       this.$nextTick(() => (this.refreshTable = true));
-      // this.refreshTable = true;
     },
   },
 };

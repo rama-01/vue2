@@ -131,3 +131,8 @@
     background-color: #909399;
   }
 }
+
+// 优化侧边栏菜单宽度显示异常
+.el-submenu .el-menu-item {
+  min-width: 0;
+}

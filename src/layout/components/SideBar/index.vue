@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'has-logo': showLogo }">
+  <div :class="{ 'has-logo': showLogo }" class="border-r-1 border-inherit">
     <logo v-if="showLogo" :collapse="isCollapse" />
     <div v-if="isStore" class="store-info">
       <span class="name">{{ isStore }}</span>
@@ -9,53 +9,56 @@
       :collapse="isCollapse"
       :unique-opened="true"
       :collapse-transition="false"
-      mode="vertical">
+      mode="vertical"
+      class="border-r-0"
+    >
       <sidebar-item
         v-for="(route, index) in sidebarRouters"
         :key="route.path + index"
         :item="route"
-        :base-path="route.path" />
+        :base-path="route.path"
+      />
     </el-menu>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
-import Logo from './Logo'
-import SidebarItem from './SidebarItem'
-import variables from '@/assets/styles/variables.scss'
+import { mapGetters, mapState } from "vuex";
+import Logo from "./Logo";
+import SidebarItem from "./SidebarItem";
+import variables from "@/assets/styles/variables.scss";
 
 export default {
   components: { SidebarItem, Logo },
   computed: {
-    ...mapState(['settings']),
-    ...mapGetters(['sidebarRouters', 'sidebar']),
+    ...mapState(["settings"]),
+    ...mapGetters(["sidebarRouters", "sidebar"]),
     activeMenu() {
-      const route = this.$route
-      const { meta, path } = route
+      const route = this.$route;
+      const { meta, path } = route;
       // if set path, the sidebar will highlight the path you set
       if (meta.activeMenu) {
-        return meta.activeMenu
+        return meta.activeMenu;
       }
-      return path
+      return path;
     },
     showLogo() {
       // return this.$store.state.settings.sidebarLogo;
     },
     variables() {
-      return variables
+      return variables;
     },
     isCollapse() {
       // return !this.sidebar.opened;
     },
     isStore() {
       if (this.$store.getters.storeName && this.$store.getters.storeId) {
-        return this.$store.getters.storeName
+        return this.$store.getters.storeName;
       }
-      return ''
-    }
-  }
-}
+      return "";
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
