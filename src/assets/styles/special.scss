@@ -115,3 +115,19 @@
   color: #fff;
   background-color: #33bdbd;
 }
+
+.addBtn {
+  background-color: #e6f7f7;
+  &:hover {
+    color: #fff;
+    background-color: #00acac;
+  }
+}
+
+.expandCollapseBtn {
+  background-color: #f4f4f5;
+  &:hover {
+    color: #fff;
+    background-color: #909399;
+  }
+}

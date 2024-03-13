@@ -1,15 +1,23 @@
 <template>
   <el-table
-    :data="articleList"
+    :data="bannerList"
     :height="tableHeight"
     size="small"
     style="width: 100%">
     <el-table-column prop="id" label="ID" />
     <el-table-column prop="title" label="标题" />
     <el-table-column prop="storeId" label="所属店铺" />
-    <el-table-column prop="url" label="图片" />
-    <el-table-column prop="createTime" label="创建时间" />
-    <el-table-column prop="updateTime" label="更新时间" />
+    <el-table-column label="图片" />
+    <el-table-column prop="createTime" label="创建时间" width="200">
+      <template slot-scope="{ row: { createTime } }">
+        {{ $utils.parseTime(createTime) }}
+      </template>
+    </el-table-column>
+    <el-table-column prop="updateTime" label="更新时间" width="200">
+      <template slot-scope="{ row: { updateTime } }">
+        {{ $utils.parseTime(updateTime) }}
+      </template>
+    </el-table-column>
     <el-table-column prop="status" label="状态">
       <template slot-scope="{ row: { id, status, title } }">
         <el-switch
@@ -21,7 +29,7 @@
       </template>
     </el-table-column>
     <el-table-column prop="sort" label="排序" />
-    <el-table-column label="操作" width="125">
+    <el-table-column label="操作" width="125" fixed="right">
       <template slot-scope="{ row }">
         <el-button
           style="padding: 0"
@@ -45,28 +53,14 @@
 </template>
 
 <script>
-import { updateArticleStatus } from '@/api/article'
 export default {
   props: {
     tableHeight: Number,
-    articleList: Array
+    bannerList: Array
   },
   data() {
     return {}
   },
-  methods: {
-    handleSwitchChange(id, status, title) {
-      const text = status === 'A' ? '启用' : '禁用'
-      this.confirm(`确认要${text}${title}吗?`, () => {
-        updateArticleStatus({ id, status }).then(() => {
-          this.$emit('action-event', 'update-status')
-          this.$message({
-            message: text + '成功',
-            type: 'success'
-          })
-        })
-      })
-    }
-  }
+  methods: {}
 }
 </script>

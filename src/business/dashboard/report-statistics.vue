@@ -85,7 +85,6 @@ export default {
       app.loading = true
       // 近7日订单数量和活跃会员数量
       getStatisticData({ tag: 'order,user_active' }).then((res) => {
-        // console.log(123, res)
         const labelData1 = res.data[0] ? res.data[0] : []
         const labelData2 = res.data[1] ? res.data[1] : []
         const dataList1 = []

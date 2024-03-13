@@ -7,7 +7,14 @@
       <el-input v-model="form.title" placeholder="请输入标题"></el-input>
     </el-form-item>
     <el-form-item class="flex" label="所属店铺">
-      <el-select v-model="form.status" placeholder="所属店铺"></el-select>
+      <el-select v-model="form.storeId" placeholder="所属店铺">
+        <el-option
+          v-for="item in storeList"
+          class="flex"
+          :key="item.id"
+          :label="item.name"
+          :value="item.id"></el-option>
+      </el-select>
     </el-form-item>
     <el-form-item class="flex w-40" label="状态">
       <el-select v-model="form.status" placeholder="状态">
@@ -43,11 +50,15 @@
 
 <script>
 export default {
+  props: {
+    storeList: Array
+  },
   data() {
     return {
       form: {
         title: '',
-        status: ''
+        status: '',
+        storeId: null
       }
     }
   },

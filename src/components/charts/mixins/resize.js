@@ -1,4 +1,4 @@
-import { debounce } from "@/utils/tools"
+import util from "@/utils/tools"
 
 export default {
   data() {
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     initListener() {
-      this.$_resizeHandler = debounce(() => {
+      this.$_resizeHandler = util.debounce(() => {
         this.resize()
       }, 50)
       window.addEventListener('resize', this.$_resizeHandler)
