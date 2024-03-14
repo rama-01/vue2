@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css';
 //按需引入
-import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup, Pagination, Switch, Tooltip } from 'element-ui';
-//也可以写为
+import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup, Pagination, Switch, Tooltip,Breadcrumb,BreadcrumbItem } from 'element-ui';
+
 Vue.use(Button)
 Vue.use(Menu)
 Vue.use(Submenu)
@@ -27,8 +27,9 @@ Vue.use(RadioGroup)
 Vue.use(Pagination)
 Vue.use(Switch)
 Vue.use(Tooltip)
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
 
 
-// Vue.use(MessageBox)  //这里不能use方法，否则刷新页面会先执行一次
 Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$message = Message;

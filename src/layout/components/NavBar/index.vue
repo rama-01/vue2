@@ -1,14 +1,15 @@
 <template>
   <div class="flex justify-between items-center">
-    <div>
-      <i class="el-icon-s-fold"></i>
-      <i class="el-icon-s-unfold"></i>
+    <div class="flex items-center">
+      <hamburger @toggleClick="$store.dispatch('app/toggleSidebar')" />
+      <breadcrumb />
     </div>
     <div class="flex items-center">
       <img
         src="@/assets/images/avatar.png"
         alt="avatar"
-        class="w-9 h-9 rounded-full mr-1" />
+        class="w-9 h-9 rounded-full mr-1"
+      />
       <el-dropdown class="mr-7">
         <span class="el-dropdown-link">
           fuint
@@ -24,18 +25,23 @@
 </template>
 
 <script>
+import Breadcrumb from "@/components/Breadcrumb";
+import Hamburger from "@/components/Hamburger";
 export default {
+  components: { Breadcrumb, Hamburger },
   data() {
-    return {}
+    return {
+      data: "",
+    };
   },
   methods: {
     logout() {
-      this.confirm('确定注销并退出系统吗？', () => {
-        this.$store.dispatch('LogOut').then(() => {
-          location.href = '/'
-        })
-      })
-    }
-  }
-}
+      this.confirm("确定注销并退出系统吗？", () => {
+        this.$store.dispatch("LogOut").then(() => {
+          location.href = "/";
+        });
+      });
+    },
+  },
+};
 </script>
