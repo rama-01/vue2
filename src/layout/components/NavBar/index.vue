@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-between items-center">
     <div class="flex items-center">
-      <hamburger @toggleClick="$store.dispatch('app/toggleSidebar')" />
+      <hamburger @toggleClick="handleToggleClick" />
       <breadcrumb />
     </div>
     <div class="flex items-center">
@@ -27,12 +27,16 @@
 <script>
 import Breadcrumb from "@/components/Breadcrumb";
 import Hamburger from "@/components/Hamburger";
+// import { mapGetters } from "vuex";
 export default {
   components: { Breadcrumb, Hamburger },
   data() {
     return {
       data: "",
     };
+  },
+  computed: {
+    // ...mapGetters(["sidebar"]),
   },
   methods: {
     logout() {
@@ -41,6 +45,9 @@ export default {
           location.href = "/";
         });
       });
+    },
+    handleToggleClick() {
+      this.$store.dispatch("app/toggleSidebar");
     },
   },
 };

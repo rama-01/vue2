@@ -4,6 +4,7 @@
     :height="tableHeight"
     size="small"
     style="width: 100%"
+    class="overflow-x-auto"
   >
     <el-table-column prop="id" label="ID" />
     <el-table-column label="图片" />
