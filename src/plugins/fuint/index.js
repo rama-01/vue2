@@ -1,4 +1,5 @@
 // 核心插件挂载到vue原型
+import RightToolbar from '@/components/RightToolbar'
 import util from '@/utils/tools'
 import tableHeight from '@/utils/tableHeight.js' // 计算表格自适应高度
 import '@/plugins/element-ui'
@@ -15,5 +16,7 @@ export default {
     Vue.prototype.$utils = util
     // 计算表格自动高度
     Vue.prototype.$tableHeight = tableHeight
+    // 全局组件挂载
+    Vue.component('RightToolbar', RightToolbar)
   }
 }

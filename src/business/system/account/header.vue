@@ -5,16 +5,22 @@
       ref="form"
       v-show="showSearch"
     >
-      <el-form-item class="flex" label="角色名称">
+      <el-form-item class="flex" label="用户名">
         <el-input
-          v-model="searchParams.name"
-          placeholder="请输入角色名称"
+          v-model="searchParams.accountName"
+          placeholder="请输入用户名"
         ></el-input>
       </el-form-item>
-      <el-form-item class="flex" label="角色状态">
-        <el-select v-model="searchParams.status" placeholder="状态">
-          <el-option label="启用" value="A"></el-option>
-          <el-option label="禁用" value="N"></el-option>
+      <el-form-item class="flex" label="真实姓名">
+        <el-input
+          v-model="searchParams.realName"
+          placeholder="请输入真实姓名"
+        ></el-input>
+      </el-form-item>
+      <el-form-item class="flex" label="状态">
+        <el-select v-model="searchParams.accountStatus" placeholder="用户状态">
+          <el-option label="启用" :value="1"></el-option>
+          <el-option label="禁用" :value="0"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item class="flex-shrink">
@@ -40,22 +46,21 @@
       <div>
         <el-button
           size="mini"
-          icon="el-icon-plus"
+          icon="el-icon-search"
           type="primary"
           plain
-          @click="$emit('action-event', 'add')"
+          @click="$emit('action-event', 'search')"
         >
-          新增
+          搜索
         </el-button>
         <el-button
           size="mini"
-          icon="el-icon-edit"
+          icon="el-icon-refresh-left"
           type="success"
           plain
-          :disabled="selectedRole.length !== 1"
-          @click="handleUpdateRole"
+          @click="$emit('action-event', 'reset')"
         >
-          修改
+          重置
         </el-button>
       </div>
       <right-toolbar
@@ -68,18 +73,12 @@
 
 <script>
 export default {
-  props: ["searchParams", "selectedRole"],
+  props: ["searchParams"],
   data() {
     return {
       showSearch: true,
     };
   },
-  methods: {
-    handleUpdateRole() {
-      if (this.selectedRole.length === 1) {
-        this.$emit("action-event", "update", this.selectedRole[0].id);
-      }
-    },
-  },
+  methods: {},
 };
 </script>

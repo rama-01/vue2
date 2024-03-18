@@ -2,6 +2,7 @@
   <div>
     <role-header
       :searchParams="searchParams"
+      :selected-role="selectedRole"
       @action-event="handleActionEvent"
     />
     <role-table :roleList="roleList" @action-event="handleActionEvent" />
@@ -26,9 +27,15 @@ import RoleHeader from "@/business/system/role/header.vue";
 import RoleTable from "@/business/system/role/table.vue";
 import EditPopup from "@/business/system/role/edit-popup.vue";
 import FuintPagination from "@/components/pagination";
-import { getRoleList, delRole, updateRoleStatus } from "@/api/system/role";
 import { getMenuTreeSelect } from "@/api/system/menu";
-import { addRole, getRoleInfo, updateRole } from "@/api/system/role";
+import {
+  getRoleList,
+  delRole,
+  updateRoleStatus,
+  addRole,
+  getRoleInfo,
+  updateRole,
+} from "@/api/system/role";
 export default {
   name: "role",
   components: {
@@ -52,6 +59,7 @@ export default {
       roleList: [],
       total: 0,
       roleInfo: null,
+      selectedRole: [],
     };
   },
   created() {
@@ -125,6 +133,12 @@ export default {
               this.$message({ type: "success", message: "修改角色成功！" });
             })
             .catch(() => {});
+          break;
+        case "refresh":
+          this.getList();
+          break;
+        case "selection-change":
+          this.selectedRole = data;
           break;
       }
     },
