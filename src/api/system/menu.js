@@ -19,3 +19,10 @@ export const deleteMenu = (id) => request({
   method: 'get',
   isLoading: true
 })
+
+// 获取菜单下拉树列表
+export const getMenuTreeSelect = () => request({
+  url: '/backendApi/source/treeselect',
+  method: 'get',
+  isLoading: true
+})

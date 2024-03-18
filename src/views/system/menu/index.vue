@@ -6,7 +6,7 @@
         >+ 展开/折叠</el-button
       >
     </div>
-    <Table
+    <menu-table
       :treeData="treeData"
       :tableHeight="tableHeight"
       :isExpand="isExpand"
@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import Table from "@/business/system/menu/table.vue";
-import pagination from "@/components/pagination";
-import { getMenuList, deleteMenu } from "@/api/menu";
+import MenuTable from "@/business/system/menu/table.vue";
+import FuintPagination from "@/components/pagination";
+import { getMenuList, deleteMenu } from "@/api/system/menu";
 export default {
   components: {
-    Table,
-    pagination,
+    MenuTable,
+    FuintPagination,
   },
   data() {
     return {

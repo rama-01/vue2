@@ -13,3 +13,4 @@
 #### 2. 出现未明preflight预检请求
 [参考](https://juejin.cn/post/6844904053328052232)
 
+### 3. 表单组件重置表单方法resetFields不生效

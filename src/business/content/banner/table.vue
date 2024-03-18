@@ -3,7 +3,8 @@
     :data="bannerList"
     :height="tableHeight"
     size="small"
-    style="width: 100%">
+    style="width: 100%"
+  >
     <el-table-column prop="id" label="ID" />
     <el-table-column prop="title" label="标题" />
     <el-table-column prop="storeId" label="所属店铺" />
@@ -24,8 +25,9 @@
           v-model="status"
           active-value="A"
           inactive-value="N"
-          active-color="#33bdbd"
-          @change="handleSwitchChange(id, status, title)" />
+          active-color="#66b1ff"
+          @change="handleSwitchChange(id, status, title)"
+        />
       </template>
     </el-table-column>
     <el-table-column prop="sort" label="排序" />
@@ -36,7 +38,8 @@
           size="mini"
           icon="el-icon-edit"
           type="text"
-          @click="$emit('action-event', 'edit', row)">
+          @click="$emit('action-event', 'edit', row)"
+        >
           修改
         </el-button>
         <el-button
@@ -44,7 +47,8 @@
           size="mini"
           icon="el-icon-delete"
           type="text"
-          @click="$emit('action-event', 'delete', row)">
+          @click="$emit('action-event', 'delete', row)"
+        >
           删除
         </el-button>
       </template>
@@ -56,11 +60,11 @@
 export default {
   props: {
     tableHeight: Number,
-    bannerList: Array
+    bannerList: Array,
   },
   data() {
-    return {}
+    return {};
   },
-  methods: {}
-}
+  methods: {},
+};
 </script>

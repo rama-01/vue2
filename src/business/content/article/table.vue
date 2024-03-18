@@ -16,7 +16,7 @@
           v-model="status"
           active-value="A"
           inactive-value="N"
-          active-color="#33bdbd"
+          active-color="#66b1ff"
           @change="handleSwitchChange(id, status, title)"
         />
       </template>

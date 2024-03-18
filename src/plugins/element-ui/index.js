@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css';
 //按需引入
-import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup, Pagination, Switch, Tooltip,Breadcrumb,BreadcrumbItem } from 'element-ui';
+import { Button, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownMenu, DropdownItem, MessageBox, Message, Row, Col, Dialog, Form, FormItem, Input, Select, Option, Table, TableColumn, Upload, Radio, RadioGroup, Pagination, Switch, Tooltip, Breadcrumb, BreadcrumbItem, Tree, Checkbox } from 'element-ui';
 
 Vue.use(Button)
 Vue.use(Menu)
@@ -29,6 +29,8 @@ Vue.use(Switch)
 Vue.use(Tooltip)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(Tree)
+Vue.use(Checkbox)
 
 
 Vue.prototype.$confirm = MessageBox.confirm;

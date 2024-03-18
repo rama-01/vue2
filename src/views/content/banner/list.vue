@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Header
+    <banner-header
       class="max-h-20"
       :storeList="storeList"
       @action-event="handleActionEvent"
     />
-    <Table :bannerList="bannerList" @action-event="handleActionEvent" />
+    <banner-table :bannerList="bannerList" @action-event="handleActionEvent" />
     <edit-popup
       :visible.sync="editPopup.visible"
       :data="editPopup.data"
@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import Header from "@/business/content/banner/header.vue";
-import Table from "@/business/content/banner/table.vue";
+import BannerHeader from "@/business/content/banner/header.vue";
+import BannerTable from "@/business/content/banner/table.vue";
 import editPopup from "@/business/content/banner/edit-popup.vue";
 import { getBannerList, updateSingleBanner } from "@/api/banner";
 export default {
   name: "banner",
   components: {
-    Header,
-    Table,
+    BannerHeader,
+    BannerTable,
     editPopup,
   },
   data() {
